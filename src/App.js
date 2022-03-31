@@ -1,20 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Carrinho } from './components/Carrinho';
+import Main from './components/Main';
 
-const MainContainer = styled.div`
-  display: flex;
-  justify-content: center;
+const ContainerHome=styled.div`
+background-color: white;
+font-family: 'Courier New';
 `
 
-function App() {
-  return (
-    <MainContainer className="App">
+class App extends React.Component {
 
-      <Carrinho />
+  render() {
 
-    </MainContainer>
-  );
+    return (
+      <ContainerHome>
+        <Main />
+
+      </ContainerHome>
+    )
+  }
 }
 
 export default App;
