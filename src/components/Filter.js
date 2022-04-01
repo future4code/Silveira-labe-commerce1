@@ -1,25 +1,14 @@
 import React from 'react';
 import styled from 'styled-components'
 
-
 const ContainerFiltro = styled.div`
-    font-size: 20px;
-    font-weight:bold;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 20px;
-    grid-area: filtro;
-    input {
-        width: 150px;
-    }`
-
-
+    background-color: grey;
+`
 
 export class Filter extends React.Component {
 
     render() {
         return (
-
-
             <ContainerFiltro>
                 <h3>Filtro:</h3>
                 <p>Valor mínimo:</p>
