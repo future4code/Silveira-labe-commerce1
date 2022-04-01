@@ -7,10 +7,23 @@ import imagem5 from './img/joia-poder.png';
 import imagem6 from './img/joia-espaco.png';
 import { Filter } from './components/Filter';
 import Produtos from './components/Produtos';
+import { Carrinho } from './components/Carrinho';
 import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components'; 
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+  }
+`
 
 const Home = styled.div`
-
+  display: grid;
+  grid-template-columns: 200px 1fr 300px;
 `
 
 
@@ -56,13 +69,13 @@ class App extends React.Component {
   ]
 
   state = {
+    listaProdutos: this.produtos,
     minFilter: '',
     maxFilter: '',
     nameFilter: '',
-    productsInCart: [
-
-    ]
+    produtosCarrinho: []
   }
+
   onChangeMinFilter = (event) => {
     this.setState({ minFilter: event.target.value })
   }
@@ -73,16 +86,57 @@ class App extends React.Component {
     this.setState({ nameFilter: event.target.value })
   }
 
+  adicionarAoCarrinho = (produto) => {
+    const novoProduto = [
+      ...this.state.produtosCarrinho
+    ]
 
+    const produtoDoCarrinho = this.state.produtosCarrinho.find((prod) => {
+      return prod.id === produto.id;
+    })
 
+    if(produtoDoCarrinho) {
+      produtoDoCarrinho.quantidade++;
+    } else {
+      novoProduto.push({
+        ...produto,
+        quantidade: 1
+      });
+    }
 
+    this.setState({produtosCarrinho: novoProduto})
+  }
+
+  somarValorTotal = () => {
+    let valorTotal = 0;
+    
+    for(let produto of this.state.produtosCarrinho) {
+      valorTotal += produto.value * produto.quantidade;
+    }
+
+    return valorTotal;
+}
+
+// FUNÇÃO REMOVER PRODUTO DO CARRINHO (INCOMPLETA)
+
+//   removerCarrinho = (id) => {
+//     const produtoRemovido = [
+//       ...this.state.produtosCarrinho
+//     ]
+
+//     produtoRemovido.filter((produto) => {
+//       return id != produto.id;
+//     })
+
+//     this.setState({produtosCarrinho: produtoRemovido})
+// }
 
   render() { 
 
     return (
       <Home>
-        <header/>
-        <main>
+
+        <GlobalStyle />
 
         <Filter
           minFilter={this.state.minFilter}
@@ -92,17 +146,21 @@ class App extends React.Component {
           onChangeMaxFilter={this.onChangeMaxFilter}
           onChangeNameFilter={this.onChangeNameFilter}
         />
+
         <Produtos
-        arrayDeProdutos={this.produtos}
+        arrayDeProdutos={this.state.listaProdutos}
         valorMin={this.state.minFilter}
         valorMax={this.state.maxFilter}
         nomeBuscado={this.state.nameFilter}
+        addCarrinho={this.adicionarAoCarrinho}
         />
 
-        </main>
-        <footer>
+        <Carrinho 
+        produtosCarrinho={this.state.produtosCarrinho}
+        somaValorTotal={this.somarValorTotal()}
+        // removerCarrinho={this.removerCarrinho}
+        />
 
-        </footer>
 
       </Home>
     )

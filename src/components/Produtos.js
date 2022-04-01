@@ -2,25 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import CardProdutos from './CardProdutos';
 
+const ContainerProdutos = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    height: 500px;
+    background-image:url(https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-repeat: no-repeat;
+    height: 100vh;
+`
+
 const ContainerLista = styled.div`
-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
-background-image:url(https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-background-repeat: no-repeat;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 `
-
-const ContainerOrdenacao = styled.div`
-display: flex;
-justify-content: right;
-text-align: center;
-font-size: 20px;
-font-weight: bold;
-font-family: 'Courier New';
-`
-
 
 class Main extends React.Component {
     state = {
@@ -54,9 +51,9 @@ class Main extends React.Component {
         ).sort((produtoAtual, produtoSeguinte) => {
             switch (this.state.ordenacao) {
                 case "crescente":
-                    return produtoAtual.value - produtoSeguinte.value
+                    return produtoAtual.value - produtoSeguinte.value;
                 case "decrescente":
-                    return produtoSeguinte.value - produtoAtual.value
+                    return produtoSeguinte.value - produtoAtual.value;
                 default:
                     return ""
             }
@@ -67,26 +64,28 @@ class Main extends React.Component {
                     imagem={produto.imagem}
                     produto={produto.nome}
                     preco={produto.value}
+                    onClickAddCarrinho={() => this.props.addCarrinho(produto)}
                 />
-
             )
         })
 
         return (
-            <ContainerLista>
-                <ContainerOrdenacao>
+                <ContainerProdutos>
+                    
+                <div>
                     <label>Ordenação:
                         <select onChange={this.onChangeOrdenacao} name="sort">
                             <option value="crescente">Crescente</option>
                             <option value="decrescente">Decrescente</option>
                         </select>
                     </label>
-
-                </ContainerOrdenacao>
-                <div>
-                    {listaFiltrada}
                 </div>
-            </ContainerLista>
+
+                <ContainerLista>
+                {listaFiltrada}
+                </ContainerLista>
+
+                </ContainerProdutos>
         )
     }
 }
