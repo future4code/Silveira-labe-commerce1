@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import CardProdutos from './CardProdutos';
 
 const ContainerLista = styled.div`
+color: white;
 display: flex;
 flex-direction: column;
 align-items: center;
+background-image:url(https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+background-repeat: no-repeat;
+
 `
 
 const ContainerOrdenacao = styled.div`

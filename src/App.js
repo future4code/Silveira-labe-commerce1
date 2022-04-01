@@ -7,6 +7,11 @@ import imagem5 from './img/joia-poder.png';
 import imagem6 from './img/joia-espaco.png';
 import { Filter } from './components/Filter';
 import Produtos from './components/Produtos';
+import styled from 'styled-components';
+
+const Home = styled.div`
+
+`
 
 
 class App extends React.Component {
@@ -75,7 +80,7 @@ class App extends React.Component {
   render() { 
 
     return (
-      <div>
+      <Home>
         <header/>
         <main>
 
@@ -99,7 +104,7 @@ class App extends React.Component {
 
         </footer>
 
-      </div>
+      </Home>
     )
   }
 }

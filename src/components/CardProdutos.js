@@ -9,7 +9,8 @@ margin: 50px;
 align-items: center;
 font-size: 20px;
 font-weight: bold;
-font-family: 'Courier New';`
+font-family: 'Courier New';
+`
 
 
 const Button =styled.button`
