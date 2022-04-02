@@ -1,46 +1,96 @@
 import React from 'react';
 import styled from 'styled-components';
+import CardProdutos from './CardProdutos';
 
-const ContainerCard = styled.div`
-border: 5px outset #B0C4DE;
-width: 300px;
-text-align: center;
-margin: 50px;
-align-items: center;
-font-size: 20px;
-font-weight: bold;
-font-family: 'Courier New';
-background-image: url(https://www.itl.cat/wallview/xwTJwm_dark-galaxy-high-resolution-backgrounds/);
-`
-
-!=== 
-
-const Button =styled.button`
-margin: 10px;
-text-decoration: underline;
-
-        &:hover{
-            color: white;
-            background: #B0C4DE;
-            cursor: pointer;
+const ContainerProdutos = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px outset #B0C4DE;
+    height: 500px;
+    background-image:url(https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-repeat: no-repeat;
+    height: 100vh;
+        h3{
+            color: white;   
         }
 `
 
-const ImgProduto = styled.img`
-width: 40%;
+
+const ContainerLista = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 `
 
-function CardProdutos(props) {
-    return (
-        <div>
-            <ContainerCard>
-                <ImgProduto src={props.imagem} alt={props.alt} />
-                <p>{props.produto}</p>
-                <p>{props.preco}</p>
-                <Button>Adicionar ao Carrinho</Button>
-            </ContainerCard>
-        </div>
-    )
-}
+class Main extends React.Component {
+    state = {
+        ordenacao: "crescente"
+    }
+    onChangeOrdenacao = (event) => {
+        this.setState({ ordenacao: event.target.value })
+    }
 
-export default CardProdutos;
+    render() {
+
+        const { arrayDeProdutos, valorMin, valorMax, nomeBuscado } = this.props
+
+        const listaFiltrada = arrayDeProdutos.filter((produto) => {
+            return (
+                produto.nome.toUpperCase().includes(nomeBuscado.toUpperCase())
+
+            )
+
+        }).filter(produto => {
+            return (
+                valorMin === "" || produto.value >= valorMin
+            )
+        }
+
+        ).filter(produto => {
+            return (
+                valorMax === "" || produto.value <= valorMax
+            )
+        }
+        ).sort((produtoAtual, produtoSeguinte) => {
+            switch (this.state.ordenacao) {
+                case "crescente":
+                    return produtoAtual.value - produtoSeguinte.value;
+                case "decrescente":
+                    return produtoSeguinte.value - produtoAtual.value;
+                default:
+                    return ""
+            }
+
+        }).map((produto) => {
+            return (
+                <CardProdutos key={produto.id}
+                    imagem={produto.imagem}
+                    produto={produto.nome}
+                    preco={produto.value}
+                    onClickAddCarrinho={() => this.props.addCarrinho(produto)}
+                />
+            )
+        })
+
+        return (
+                <ContainerProdutos>
+                    
+                <div>
+                    <h3>Ordenação:
+                        <select onChange={this.onChangeOrdenacao} name="sort">
+                            <option value="crescente">Crescente</option>
+                            <option value="decrescente">Decrescente</option>
+                        </select>
+                    </h3>
+                </div>
+
+                <ContainerLista>
+                {listaFiltrada}
+                </ContainerLista>
+
+                </ContainerProdutos>
+        )
+    }
+}
+export default Main;
