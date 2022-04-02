@@ -17,13 +17,13 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
+    color: black;
   }
 `
 
 const Home = styled.div`
   display: grid;
-  grid-template-columns: 200px 1fr 300px;
+  grid-template-columns: 200px 1fr 200px;
 `
 
 
@@ -134,8 +134,9 @@ class App extends React.Component {
   render() { 
 
     return (
+      <div>
       <Home>
-
+        
         <GlobalStyle />
 
         <Filter
@@ -163,6 +164,7 @@ class App extends React.Component {
 
 
       </Home>
+      </div>
     )
   }
 }

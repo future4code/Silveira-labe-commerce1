@@ -2,17 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContainerCard = styled.div`
-    border: 5px outset #B0C4DE;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    width: 300px;
-    margin: 50px;
+border: 5px outset #B0C4DE;
+width: 300px;
+text-align: center;
+margin: 15px 15px;
+align-items: center;
+font-size: 20px;
+font-weight: bold;
+background-image: url(https://www.itl.cat/wallview/xwTJwm_dark-galaxy-high-resolution-backgrounds/);
+    p{
+        color: white;
+    }
 `
 
 const Button =styled.button`
-    margin: 10px;
-    text-decoration: underline;
+margin: 10px;
+text-decoration: underline;
 
         &:hover{
             color: white;
@@ -21,14 +26,20 @@ const Button =styled.button`
         }
 `
 
+const ImgProduto = styled.img`
+width: 40%;
+`
+
 function CardProdutos(props) {
     return (
+        <div>
             <ContainerCard>
-                <img src={props.imagem} alt={props.alt} />
+                <ImgProduto src={props.imagem} alt={props.alt} />
                 <p>{props.produto}</p>
                 <p>R${props.preco}</p>
-                <Button /* onClick={props.onClickAddCarrinho} */>Adicionar ao Carrinho</Button>
+                <Button>Adicionar ao Carrinho</Button>
             </ContainerCard>
+        </div>
     )
 }
 

@@ -6,12 +6,16 @@ const ContainerProdutos = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    border: 5px outset #B0C4DE;
     height: 500px;
     background-image:url(https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     background-repeat: no-repeat;
     height: 100vh;
+        h3{
+            color: white;   
+        }
 `
+
 
 const ContainerLista = styled.div`
     display: flex;
@@ -73,12 +77,12 @@ class Main extends React.Component {
                 <ContainerProdutos>
                     
                 <div>
-                    <label>Ordenação:
+                    <h3>Ordenação:
                         <select onChange={this.onChangeOrdenacao} name="sort">
                             <option value="crescente">Crescente</option>
                             <option value="decrescente">Decrescente</option>
                         </select>
-                    </label>
+                    </h3>
                 </div>
 
                 <ContainerLista>

@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const ContainerCarrinho = styled.div`
-    border: 1px solid black;
-    background-color: grey;
+border: 5px outset #B0C4DE;
+background-color: #B0C4DE;
+text-align: center;
 `
 
-const Titulo = styled.h2`
-    border: 1px solid white;
+const Titulo = styled.h3`
     display: flex;
     justify-content: space-around;
-    height: 50px;
 `
 
 const Img = styled.img`
@@ -38,8 +37,7 @@ export class Carrinho extends React.Component {
         return (
             <ContainerCarrinho>
                 <Titulo>
-                    <Img src="https://media.discordapp.net/attachments/953034002300801044/959549644088676422/cart_icon-icons.com_48341.png" />
-                    <h2>Carrinho</h2>
+                    <h3>Carrinho 🛒</h3>
                 </Titulo>
 
                 {listarProdutosCarrinho}

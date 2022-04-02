@@ -2,7 +2,17 @@ import React from 'react';
 import styled from 'styled-components'
 
 const ContainerFiltro = styled.div`
-    background-color: grey;
+border: 5px outset #B0C4DE;
+background-color: #B0C4DE;
+text-align: center;
+`
+const Titulo = styled.h3`
+border: 5px outset #B0C4DE;
+background-color: #B0C4DE;
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+
 `
 
 export class Filter extends React.Component {
@@ -10,7 +20,7 @@ export class Filter extends React.Component {
     render() {
         return (
             <ContainerFiltro>
-                <h3>Filtro:</h3>
+                <h2>Filtro 🔍</h2>
                 <p>Valor mínimo:</p>
                 <input
                     type="number"
