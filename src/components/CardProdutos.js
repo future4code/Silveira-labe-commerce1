@@ -5,7 +5,7 @@ const ContainerCard = styled.div`
 border: 5px outset #B0C4DE;
 width: 300px;
 text-align: center;
-margin: 15px 15px;
+margin: 15px;
 align-items: center;
 font-size: 20px;
 font-weight: bold;

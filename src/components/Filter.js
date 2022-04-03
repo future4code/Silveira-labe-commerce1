@@ -2,12 +2,10 @@ import React from 'react';
 import styled from 'styled-components'
 
 const ContainerFiltro = styled.div`
-border: 5px outset #B0C4DE;
-background-color: #B0C4DE;
+background-color: #E4ECFC;
 text-align: center;
 `
 const Titulo = styled.h3`
-border: 5px outset #B0C4DE;
 background-color: #B0C4DE;
     display: flex;
     justify-content: space-around;
