@@ -5,8 +5,8 @@ import CardProdutos from './CardProdutos';
 const ContainerProdutos = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
     border: 5px outset #B0C4DE;
+    align-items: center;
     height: 500px;
     background-image:url(https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     background-repeat: no-repeat;

@@ -26,7 +26,6 @@ const Home = styled.div`
   grid-template-columns: 200px 1fr 200px;
 `
 
-
 class App extends React.Component {
 
   produtos = [
