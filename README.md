@@ -16,5 +16,5 @@
 ## Carrinho
 ![image](https://user-images.githubusercontent.com/79599836/161460030-b06ac477-1be9-4d43-a364-d846a71b0b14.png)
 
-## Página completa
+## Layout completo
 ![image](https://user-images.githubusercontent.com/79599836/161459969-fbb20c6b-0b17-4b6c-8a10-9ebfb0881b24.png)
