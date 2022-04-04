@@ -5,20 +5,13 @@ const ContainerFiltro = styled.div`
 background-color: #E4ECFC;
 text-align: center;
 `
-const Titulo = styled.h3`
-background-color: #B0C4DE;
-    display: flex;
-    justify-content: space-around;
-    height: 50px;
-
-`
 
 export class Filter extends React.Component {
 
     render() {
         return (
             <ContainerFiltro>
-                <h2>Filtro 🔍</h2>
+                <h2>Filtro <span role="img" aria-label="xxxxx">🔍</span></h2>
                 <p>Valor mínimo:</p>
                 <input
                     type="number"
