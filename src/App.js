@@ -32,37 +32,37 @@ class App extends React.Component {
     {
       id: 1,
       nome: "Space Stone",
-      value: 900.0,
+      value: 450000,
       imagem: imagem6
     },
     {
       id: 2,
       nome: "Mind Stone",
-      value: 850.0,
+      value: 300000,
       imagem: imagem2
     },
     {
       id: 3,
       nome: "Reality Stone",
-      value: 750.0,
+      value: 200000,
       imagem: imagem3
     },
     {
       id: 4,
       nome: "Power Stone",
-      value: 900.0,
+      value: 900000,
       imagem: imagem5
     },
     {
       id: 5,
       nome: "Time Stone",
-      value: 1000.0,
+      value: 500000,
       imagem: imagem4
     },
     {
       id: 6,
       nome: "Soul Stone",
-      value: 500.0,
+      value: 250000,
       imagem: imagem1
     }
   ]
@@ -118,17 +118,20 @@ class App extends React.Component {
 
 // FUNÇÃO REMOVER PRODUTO DO CARRINHO (INCOMPLETA)
 
-//   removerCarrinho = (id) => {
-//     const produtoRemovido = [
-//       ...this.state.produtosCarrinho
-//     ]
+  removerCarrinho = (produtoId) => {
+      const removerProdutos = this.state.produtosCarrinho.map((produto) => {
+        if(produto.id === produtoId) {
+          return ({
+            ...produto,
+            quantidade: produto.quantidade - 1
+          })
+        }
 
-//     produtoRemovido.filter((produto) => {
-//       return id != produto.id;
-//     })
+        return produto;
+      }).filter(produto => produto.quantidade > 0);
 
-//     this.setState({produtosCarrinho: produtoRemovido})
-// }
+    this.setState({produtosCarrinho: removerProdutos})
+}
 
   render() { 
 
@@ -158,7 +161,7 @@ class App extends React.Component {
         <Carrinho 
         produtosCarrinho={this.state.produtosCarrinho}
         somaValorTotal={this.somarValorTotal()}
-        // removerCarrinho={this.removerCarrinho}
+        removerCarrinho={this.removerCarrinho}
         />
 
 

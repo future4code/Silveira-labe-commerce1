@@ -6,15 +6,6 @@ background-color: #E4ECFC;
 text-align: center;
 `
 
-const Titulo = styled.h3`
-    display: flex;
-    justify-content: space-around;
-`
-
-const Img = styled.img`
-    height: 75%;
-`
-
 const ContainerProduto = styled.div`
     display: flex;
     justify-content: space-between;
@@ -23,9 +14,9 @@ const ContainerProduto = styled.div`
 export class Carrinho extends React.Component {
 
     render() {
-        const listarProdutosCarrinho = this.props.produtosCarrinho.map((produto) => {
+        const listarProdutosCarrinho = this.props.produtosCarrinho.map((produto, key) => {
             return (
-                <ContainerProduto>
+                <ContainerProduto key={produto.id}>
                     <p>{produto.quantidade}x</p>
                     <p>{produto.nome}</p>
                     <button onClick={() => this.props.removerCarrinho(produto.id)}>Remover</button>
@@ -35,10 +26,10 @@ export class Carrinho extends React.Component {
 
         return (
             <ContainerCarrinho>
-                <Titulo>
-                    <h3>Carrinho 🛒</h3>
-                </Titulo>
-
+                    <h3>
+                        Carrinho <span role="img" aria-label="xxxxx">🛒</span>
+                    </h3>
+    
                 {listarProdutosCarrinho}
 
                 <p>Valor Total: R${this.props.somaValorTotal}</p>

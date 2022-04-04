@@ -17,7 +17,8 @@ background-image: url(https://www.itl.cat/wallview/xwTJwm_dark-galaxy-high-resol
 
 const Button =styled.button`
 margin: 10px;
-text-decoration: underline;
+padding: 0 15px;
+border-radius: 10px;
 
         &:hover{
             color: white;
@@ -37,7 +38,7 @@ function CardProdutos(props) {
                 <ImgProduto src={props.imagem} alt={props.alt} />
                 <p>{props.produto}</p>
                 <p>R${props.preco}</p>
-                <Button>Adicionar ao Carrinho</Button>
+                <Button onClick={props.onClickAddCarrinho}>Adicionar ao Carrinho</Button>
             </ContainerCard>
         </div>
     )
